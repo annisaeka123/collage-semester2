@@ -8,15 +8,13 @@ public class pemilihan {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         
-        // declare, init
-        boolean isValid;
-        double bobotNTugas = 0.2, bobotNKuis = 0.2, bobotNUTS = 0.3, bobotNUAS = 0.3, nilaiAkhir;
+        boolean batasNilai;
+        double ketNIlaiTugas = 0.2, ketNilaiKuis = 0.2, ketNilaiUTS = 0.3, ketNilaiUAS = 0.3, nilaiAkhir;
         int nilaiTugas, nilaiKuis, nilaiUTS, nilaiUAS;
         String nilaiHuruf;
         
-        System.out.println("\nPROGRAM MENGHITUNG NILAI AKHIR\n");
+        System.out.println("\nProgram Menghitung Nilai Akhir\n");
         
-        // input user
         System.out.print("Masukkan Nilai Tugas: ");
         nilaiTugas = input.nextInt();
         System.out.print("Masukkan Nilai Kuis: ");
@@ -27,14 +25,14 @@ public class pemilihan {
         nilaiUAS = input.nextInt();
 
         // validasi
-        isValid = (0 <= nilaiTugas && nilaiTugas <= 100 && 0 <= nilaiKuis && nilaiKuis <= 100 && 0 <= nilaiUTS && nilaiUTS <= 100 && 0 <= nilaiUAS && nilaiUAS <= 100); 
+        batasNilai = (0 <= nilaiTugas && nilaiTugas <= 100 && 0 <= nilaiKuis && nilaiKuis <= 100 && 0 <= nilaiUTS && nilaiUTS <= 100 && 0 <= nilaiUAS && nilaiUAS <= 100); 
 
-        if (!isValid) {
+        if (!batasNilai) {
             // Output
             System.out.println("\n\nnilai tidak valid\n\n");
         } else {
             // proses menghitung nilai akhir
-            nilaiAkhir = (nilaiTugas * bobotNTugas) + (nilaiKuis * bobotNKuis) + (nilaiUTS * bobotNUTS) + (nilaiUAS * bobotNUAS);
+            nilaiAkhir = (nilaiTugas * ketNIlaiTugas) + (nilaiKuis * ketNilaiKuis) + (nilaiUTS * ketNilaiUTS) + (nilaiUAS * ketNilaiUAS);
             // konversi nilai akhir -> nilai huruf (ternary operator)
             nilaiHuruf =  (nilaiAkhir > 80 && nilaiAkhir <= 100) ? "A" 
                         : (nilaiAkhir > 73) ? "B+" 
