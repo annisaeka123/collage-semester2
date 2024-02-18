@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * pemilihan
  */
-public class pemilihann {
+public class pemilihan {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
