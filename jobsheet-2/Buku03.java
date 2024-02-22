@@ -42,4 +42,10 @@ public class Buku03 {
         this.stok = stok;
         harga = har;
     }
+
+    public Buku03(String jud, int stok, int har){
+        judul = jud;
+        this.stok = stok;
+        harga = har;
+    }
 }
