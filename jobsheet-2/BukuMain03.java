@@ -22,5 +22,8 @@ public class BukuMain03 {
 
         Buku03 bukuAnnisa = new Buku03("Pulang", 10, 90000);
         bukuAnnisa.tampilInformasi();
+        bukuAnnisa.hitungHargaTotal(2);
+        bukuAnnisa.hitungDiskon();
+        bukuAnnisa.hitungHargaBayar();
     }
 }

@@ -4,7 +4,8 @@
 public class Buku03 {
 
     String judul, pengarang;
-    int halaman, stok, harga;
+    int halaman, stok, harga, hargaTotal;
+    double diskon;
 
     void tampilInformasi() {
         System.out.println("Judul: " + judul);
@@ -29,6 +30,28 @@ public class Buku03 {
 
     void gantiHarga(int hrg) {
         harga = hrg;
+    }
+
+    void hitungHargaTotal(int jml) { //jml = jumlah buku terjual
+        hargaTotal = jml * harga;
+        System.out.println("Harga Total: " + hargaTotal);
+    }
+
+    void hitungDiskon() {
+        if (hargaTotal > 150000) {
+            diskon = hargaTotal * 0.12;
+        } else if (hargaTotal >= 75000 && hargaTotal <= 150000) {
+            diskon = hargaTotal * 0.05;
+        } else {
+            diskon = 0;
+        }
+
+        System.out.println("Diskon: " + diskon);
+    }
+
+    void hitungHargaBayar() {
+        hargaTotal -= diskon;
+        System.out.println("Harga Bayar: " + hargaTotal);
     }
 
     public Buku03() {
