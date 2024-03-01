@@ -9,6 +9,12 @@ public class Balok {
     public int lebar;
     public int tinggi;
 
+    //konstruktor1
+    public Balok() {
+
+    }
+
+    //konstruktor2
     public Balok(int p, int l, int t)
     {
         panjang = p;
