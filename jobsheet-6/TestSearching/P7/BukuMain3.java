@@ -13,7 +13,7 @@ public class BukuMain3{
         for (int i = 0; i <jumBuku ; i++) {
             System.out.println("-----------------");
             System.out.print("Kode Buku \t: ");
-            int kodeBuku = s.nextInt();
+            String kodeBuku = s.next();
             s.nextLine();
             System.out.print("Judul buku \t : ");
             String judulBuku = s.nextLine();
@@ -36,7 +36,8 @@ public class BukuMain3{
         System.out.println("Pencarian Data: ");
         System.out.println("Masukkan kode buku yang dicari: ");
         System.out.print("Kode Buku: ");
-        int cari = s.nextInt();
+        String cari = s.next();
+        s.nextLine();
 
         System.out.println("==================");
         System.out.println("Menggunakan sequential search");
