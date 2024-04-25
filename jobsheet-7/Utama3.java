@@ -11,12 +11,15 @@ public class Utama3 {
         Gudang3 gudang = new Gudang3(kapasitas);
 
         while (true) {
-            System.out.println("\nMenu:");
+            System.out.println("\n================================");
+            System.out.println("Menu:");
             System.out.println("1. Tambah barang");
             System.out.println("2. Ambil barang");
             System.out.println("3. Tampilkan tumpukan barang");
             System.out.println("4. Lihat barang teratas");
-            System.out.println("5. Keluar");
+            System.out.println("5. Lihat barang terbawah");
+            System.out.println("6. Cari barang");
+            System.out.println("7. Keluar");
             System.out.print("Pilih operasi: ");
             int pilihan = scanner.nextInt();
             scanner.nextLine();
@@ -47,7 +50,23 @@ public class Utama3 {
                     break; 
 
                 case 5:
+                    gudang.lihatBarangTerbawah();
                     break;
+                
+                case 6:
+                    System.out.print("Masukkan kode atau nama barang yang dicari: ");
+                    String input = scanner.nextLine();
+                    try {
+                        int inputKode = Integer.parseInt(input);
+                        gudang.cariBarang(inputKode, null);
+                    } catch (NumberFormatException e) {
+                        gudang.cariBarang(-1, input);
+                    }
+                    break;
+                
+                case 7:
+                    scanner.close();
+                    return;
                     
                 default:
                     System.out.println("Pilihan tidak valid. Silakan coba lagi");

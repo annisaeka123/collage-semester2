@@ -90,4 +90,28 @@ public class Gudang3 {
         return biner;
     }
 
+    public Barang3 lihatBarangTerbawah() {
+        if (!cekKosong()) {
+            System.out.println("Barang terbawah: " + tumpukan[0].nama);
+            return tumpukan[0];
+        } else {
+            System.out.println("Tumpukan barang kosong");
+            return null;
+        }
+    }
+
+    public boolean cariBarang(int kodeCari, String namaCari) {
+        for (int i= 0; i <= top; i++) {
+            if (tumpukan [i].kode == kodeCari ||tumpukan[i].nama.equalsIgnoreCase(namaCari)) {
+                System.out.println("Barang ditemukan");
+                System.out.print("Kode        : " + tumpukan[i].kode);
+                System.out.print("\nNama        : " + tumpukan[i].nama);
+                System.out.print("\nKategori    : " + tumpukan[i].kategori);
+                return true;
+            }
+        }
+        System.out.println("Barang tidak ditemukan");
+        return false;
+    }
+
 }
