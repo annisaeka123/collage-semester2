@@ -1,4 +1,10 @@
+package Tugas;
+
 import java.util.Scanner;
+
+/**
+ * QueueMain
+ */
 public class QueueMain {
 
     public static void menu() {
@@ -8,6 +14,8 @@ public class QueueMain {
         System.out.println("3. Cek antrian terdepan");
         System.out.println("4. Cek semua antrian");
         System.out.println("5. Cek antrian paling belakang");
+        System.out.println("6. Cek posisi antrian");
+        System.out.println("7. Daftar seluruh pembeli");
         System.out.println("--------------------------");
     }
 
@@ -26,25 +34,19 @@ public class QueueMain {
             sc.nextLine();
             switch (pilih) {
                 case 1:
-                    System.out.print("No Rekening: ");
-                    String norek = sc.nextLine();
                     System.out.print("Nama: ");
                     String nama = sc.nextLine();
-                    System.out.print("Alamat: ");
-                    String alamat = sc.nextLine();
-                    System.out.print("Umur: ");
-                    int umur = sc.nextInt();
-                    System.out.print("Saldo: ");
-                    double saldo = sc.nextDouble();
-                    Nasabah nb = new Nasabah(norek, nama, alamat, umur, saldo);
+                    System.out.print("Nomor HP: ");
+                    int noHp = sc.nextInt();
+                    Pembeli pm = new Pembeli(nama, noHp);
                     sc.nextLine();
-                    antri.Enqueue(nb);
+                    antri.Enqueue(pm);
                     break;
 
                 case 2:
-                    Nasabah data = antri.Dequeue();
-                    if (!"".equals(data.norek) && !"".equals(data.nama) && !"".equals(data.alamat) && data.umur != 0 && data.saldo != 0) {
-                        System.out.println("Antrian yang keluar: " + data.norek + " " + data.nama + " " + data.alamat + " " + data.umur + " " + data.saldo);
+                    Pembeli data = antri.Dequeue();
+                    if (!"".equals(data.nama) && !"".equals(data.noHp)) {
+                        System.out.println("Antrian yang keluar: " + data.nama + " " + data.noHp);
                         break;
                     }
 
@@ -57,15 +59,24 @@ public class QueueMain {
                     break;
                 
                 case 5:
-                    Nasabah rearData = antri.peekRear();
+                    Pembeli rearData = antri.peekRear();
                     if (rearData != null) {
-                        System.out.println("Antrian paling belakang: " + rearData.norek + " " + rearData.nama + " " + rearData.alamat + " " + rearData.umur + " " + rearData.saldo);
+                        System.out.println("Antrian paling belakang: " + rearData.nama + " " + rearData.noHp);
                     } else {
                         System.out.println("Queue masih kosong");
                     }
                     break;
                     
+                case 6:
+                    System.out.print("Masukkan nama pembeli: ");
+                    String namaPembeli = sc.nextLine();
+                    antri.peekPosition(namaPembeli);
+                    break;
+                
+                case 7:
+                    antri.daftarPembeli();
+                    break;
             }
-        }while (pilih == 1 || pilih == 2 || pilih == 3 || pilih == 4);
+        }while (pilih == 1 || pilih == 2 || pilih == 3 || pilih == 4 || pilih == 5 || pilih == 6 || pilih == 7);
     }
 }

@@ -1,9 +1,11 @@
+package Tugas;
+
 /**
  * Queue
  */
 public class Queue {
 
-    Nasabah[] data;
+    Pembeli[] antrian;
     int front;
     int rear;
     int size;
@@ -11,7 +13,7 @@ public class Queue {
 
     public Queue(int n) {
         max = n;
-        data = new Nasabah[max];
+        antrian = new Pembeli[max];
         size = 0;
         front = rear = -1;
     }
@@ -34,7 +36,7 @@ public class Queue {
 
     public void peek() {
         if (!IsEmpty()) {
-            System.out.println("Elemen  terdepan: " + data[front].norek + " " + data[front].nama + " " + data[front].alamat + " " + data[front].umur + " " + data[front].saldo);
+            System.out.println("Elemen  terdepan: " + antrian[front].nama + " " + antrian[front].noHp);
         } else {
             System.out.println("Queue masih kosong");
         }
@@ -46,10 +48,10 @@ public class Queue {
         } else {
             int i = front;
             while (i != rear) {
-                System.out.println(data[i].norek + " " + data[i].nama + " " + data[i].alamat + " " + data[i].umur + " " + data[i].saldo);
+                System.out.println(antrian[i].nama + " " + antrian[i].noHp);
                 i = (i + 1) % max;
             }
-            System.out.println(data[i].norek + " " + data[i].nama + " " + data[i].alamat + " " + data[i].umur + " " + data[i].saldo);
+            System.out.println(antrian[i].nama + " " + antrian[i].noHp);
             System.out.println("Jumlah elemen = " + size);
         }
     }
@@ -64,7 +66,7 @@ public class Queue {
         }
     }
 
-    public void Enqueue(Nasabah dt) {
+    public void Enqueue(Pembeli dt) {
         if (IsFull()) {
             System.out.println("Queue sudah penuh");
             System.out.println("Program dihentikan karena queue overflow.");
@@ -78,19 +80,19 @@ public class Queue {
             } else {
                 rear++;
             }
-            data[rear] = dt;
+            antrian[rear] = dt;
             size++;
         }
     }
 
-    public Nasabah Dequeue() {
-        Nasabah dt = new Nasabah();
+    public Pembeli Dequeue() {
+        Pembeli dt = new Pembeli();
         if(IsEmpty()) {
             System.out.println("Queue masih kososng");
             System.out.println("Program dihentikan karena queue underflow.");
             System.exit(0);
         } else {
-            dt = data[front];
+            dt = antrian[front];
             size--;
             if (IsEmpty()) {
                 front = rear = -1;
@@ -105,11 +107,39 @@ public class Queue {
         return dt;
     }
 
-    public Nasabah peekRear() {
+    public Pembeli peekRear() {
         if (!IsEmpty()) {
-            return data[rear];
+            return antrian[rear];
         } else {
             return null;
+        }
+    }
+
+    public void peekPosition(String nama) {
+        boolean found = false;
+        int position = -1;
+        for (int i = front; i <= rear; i++) {
+            if (antrian[i].nama.equals(nama)) {
+                found = true;
+                position = i - front + 1;
+                break;
+            }
+        }
+        if (found) {
+            System.out.println("Pembeli " + nama + " berada di posisi antrian ke-" + position);
+        } else {
+            System.out.println("Pembeli " + nama + " tidak ditemukan dalam antrian");
+        }
+    }
+
+    public void daftarPembeli() {
+        if (IsEmpty()) {
+            System.out.println("Antrian masih kosong");
+        } else {
+            System.out.println("Daftar Pembeli:");
+            for (int i = front; i <= rear; i++) {
+                System.out.println("Nama: " + antrian[i].nama + " - " + "Nomor HP: " + antrian[i].noHp);
+            }
         }
     }
 }
